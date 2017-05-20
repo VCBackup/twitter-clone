@@ -166,10 +166,16 @@ body {
 		margin: 10px 0;
 		padding-left: 42px;
 	}
+	.tweet-show {
+		visibility: visible;
+	}
+	.hide-def {
+		display: none;
+	}
 
 	.tweet-actions {
 		text-align: right;
-		display: none;
+		visibility: hidden;
 	}
 		.tweet-actions ul {
 			list-style-type: none;

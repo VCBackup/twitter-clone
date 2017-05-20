@@ -3,23 +3,46 @@ $(document).ready(function(){
         $('.tweet-compose').css('height', '5em');
         $('#tweet-controls').show();  
     })
-        var jsTweetCompose = document.getElementById('tweet-compose');
-        var jsCharCount = document.getElementById('char-count');
-        jsCharCount = 140;
+
+    var keydownThing = function(){
+        var jsCharCount = $('#char-count');
+        var jsComposeText = $('.tweet-compose');
+        var colorDetection = jsCharCount.html(140 - jsComposeText.val().length);
+            if (colorDetection < 11){
+            $('#char-count').css('color', 'red');
+    }
+    };
+
     $('.tweet-compose').keydown(function(){
-        return jsCharCount.value--;        
+        keydownThing();
     })
-    
+    $('.tweet-compose').keyup(function(){
+        keydownThing();
+    })
+    $('.tweet-compose').keypress(function(){
+        keydownThing();
+    })
+
+
+
     $('.tweet').hover(function(){
-        $('.tweet-actions').fadeIn( 500 );
+        $('.tweet-actions').addClass('tweet-show');
 
     }, function(){
-        $('.tweet-actions').fadeOut( 100 );
+        $('.tweet-actions').removeClass('tweet-show');
 
     })
 
 
+    var toggleTweet = function() {
+        $(".tweet").click(function() {
+            $(this).find(".hide-def").slideDown();
+        });
 
+        $(".tweet").mouseleave(function() {
+            $(this).find(".hide-def").slideUp('medium');
+        });
+    };
 
 
 
